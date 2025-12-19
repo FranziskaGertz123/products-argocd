@@ -12,7 +12,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: rabbitmq
-  namespace: products
+  namespace: product-management
 spec:
   replicas: 1
   selector:
@@ -37,7 +37,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: rabbitmq
-  namespace: products
+  namespace: product-management
 spec:
   selector:
     app: rabbitmq
