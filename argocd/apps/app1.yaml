@@ -7,12 +7,12 @@ metadata:
   name: app1
   namespace: argocd
 spec:
-  project: argo-project
+  project: gitops-project
 
   source:
     repoURL: https://github.com/FranziskaGertz123/products-argocd.git
     targetRevision: main
-    path: argoCD/apps/app1/manifests
+    path: argocd/apps/app1/manifests
 
   destination:
     server: https://kubernetes.default.svc
@@ -22,3 +22,6 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
