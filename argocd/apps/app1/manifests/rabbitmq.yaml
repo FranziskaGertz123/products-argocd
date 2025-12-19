@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: rabbitmq-secret
-  namespace: products
+  namespace: product-management
 type: Opaque
 stringData:
   RABBITMQ_DEFAULT_USER: guest
