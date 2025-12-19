@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: gitops-project
+  namespace: argocd
+spec:
+  description: GitOps Project for managed applications
+
+  # Erlaubte Git-Repositories
+  sourceRepos:
+    - 'https://github.com/FranziskaGertz123/products-argocd.git'
+
+  # Erlaubte Ziel-Cluster & Namespaces
+  destinations:
+    - server: https://kubernetes.default.svc
+      namespace: '*'
+
+  # Erlaubte Cluster-Ressourcen
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+
+  # Erlaubte Namespace-Ressourcen
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
+
+  # Optional: Rollen (RBAC innerhalb des Projekts)
+#  roles:
+#    - name: developer
+#      description: Read-only access
+#      policies:
+#        - p, proj:gitops-project:developer, applications, get, gitops-project/*, allow
+#      groups:
+#        - devs

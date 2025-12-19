@@ -1,0 +1,24 @@
+#
+# templates mgl: templates ordner, app1 ordner, new helm chart (staging, prod...helm charts: nurnoch values.yaml anpassungen nötig)
+# manifeste (deployment.yamls)
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app1
+  namespace: argocd
+spec:
+  project: argo-project
+
+  source:
+    repoURL: https://github.com/FranziskaGertz123/products-argocd.git
+    targetRevision: main
+    path: argoCD/apps/app1/manifests
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: app1
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
